@@ -1,0 +1,82 @@
+import random
+import statistics
+from time import time
+
+import math
+import numpy as np
+
+class timer:
+    def __init__(self, name="timer"):
+        self.name = name
+    def __enter__(self):
+        print("timing: %s"%self.name)
+        self.starttime = time()
+    def __exit__(self, type, value, traceback):
+        endtime = time()
+        self.total_time = endtime-self.starttime
+        print("runtime=%s"%(self.total_time))
+        print()
+
+
+with timer("create array"):
+    a = []
+    for i in range(1000000):
+        a.append(random.randint(0,100000))
+
+with timer("copy array"):
+    python_a = list(a)
+
+with timer("create numpy array"):
+    numpy_a = np.array(python_a)
+
+with timer("statistics mean"):
+    statistics_mean = statistics.mean(python_a)
+    print(statistics_mean)
+
+with timer("statistics stddev"):
+    statistics_stdev = statistics.stdev(python_a)
+    print(statistics_stdev)
+
+with timer("numpy mean"):
+    numpy_mean = np.mean(numpy_a)
+    print(numpy_mean)
+
+numpy_a = np.array(python_a)
+
+with timer("numpy stddev"):
+    numpy_stddev = np.std(numpy_a)
+    print(numpy_stddev)
+
+
+assert math.isclose(statistics_mean, numpy_mean, abs_tol=1), "%s %s"%(statistics_mean, numpy_mean)
+
+assert math.isclose(statistics_stdev, numpy_stddev, abs_tol=1), "%s %s"%(statistics_stdev, numpy_stddev)
+
+'''
+Sample Output:
+
+timing: create array
+runtime=33.240514039993286
+
+timing: copy array
+runtime=0.013187885284423828
+
+timing: create numpy array
+runtime=0.08854007720947266
+
+timing: statistics mean
+50021.886547
+runtime=10.705810070037842
+
+timing: statistics stddev
+28872.424902061848
+runtime=51.89962410926819
+
+timing: numpy mean
+50021.886547
+runtime=0.006788015365600586
+
+timing: numpy stddev
+28872.41046584579
+runtime=0.008826017379760742
+'''
