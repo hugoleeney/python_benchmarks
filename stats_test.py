@@ -1,3 +1,46 @@
+#!/usr/bin/env python3
+"""
+Written to work with standard python 3.5.5 (no additional libraries required).
+Explores the fastest way to run simple statistics on arrays of numbers.
+
+Summary Conclusion: for non-trivial cases it is quicker to create a numpy array and use numpy functions.
+
+Sample Output:
+
+timing: create array
+runtime=32.42217493057251
+
+timing: copy array
+runtime=0.014689207077026367
+
+timing: create numpy array
+runtime=0.08298778533935547
+
+timing: python min
+python_min=0
+runtime=0.019994020462036133
+
+timing: statistics mean
+statistics_mean=50041.906475
+runtime=10.625783920288086
+
+timing: statistics stddev
+statistics_stdev=28843.027183552997
+runtime=55.764643907547
+
+timing: numpy min
+numpy_min=0
+runtime=0.006093025207519531
+
+timing: numpy mean
+50041.906475
+runtime=0.0033330917358398438
+
+timing: numpy stddev
+28843.012762035803
+runtime=0.00748896598815918
+"""
+
 import random
 import statistics
 from time import time
@@ -61,42 +104,3 @@ with timer("numpy stddev"):
 assert math.isclose(statistics_mean, numpy_mean, abs_tol=1), "%s %s"%(statistics_mean, numpy_mean)
 
 assert math.isclose(statistics_stdev, numpy_stddev, abs_tol=1), "%s %s"%(statistics_stdev, numpy_stddev)
-
-
-'''
-Sample Output:
-
-timing: create array
-runtime=32.42217493057251
-
-timing: copy array
-runtime=0.014689207077026367
-
-timing: create numpy array
-runtime=0.08298778533935547
-
-timing: python min
-python_min=0
-runtime=0.019994020462036133
-
-timing: statistics mean
-statistics_mean=50041.906475
-runtime=10.625783920288086
-
-timing: statistics stddev
-statistics_stdev=28843.027183552997
-runtime=55.764643907547
-
-timing: numpy min
-numpy_min=0
-runtime=0.006093025207519531
-
-timing: numpy mean
-50041.906475
-runtime=0.0033330917358398438
-
-timing: numpy stddev
-28843.012762035803
-runtime=0.00748896598815918
-
-'''
