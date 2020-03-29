@@ -1,3 +1,21 @@
+#!/usr/bin/env python3
+"""
+Written to work with standard python 3.5.5 (no additional libraries required).
+Explores the fastest way to generate a 50/50 random variable.
+
+Summary Conclusion: using random.random and comparing to 0.5 is much faster than using random.choice([0,1]).
+
+Sample Output:
+
+timing: use_random
+4999421
+runtime=2.049018144607544
+
+timing: use_choice
+5001631
+runtime=16.556126832962036
+"""
+
 import random
 from time import time
 
@@ -32,16 +50,3 @@ with timer("use_random"):
 
 with timer("use_choice"):
     print(do_test_n_times(n, lambda x: random.choice([0,1])))
-
-
-'''
-SAMPLE OUTPUT
-
-timing: use_random
-4999421
-runtime=2.049018144607544
-
-timing: use_choice
-5001631
-runtime=16.556126832962036
-'''
