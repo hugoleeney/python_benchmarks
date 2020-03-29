@@ -15,28 +15,23 @@ class timer:
         print()
 
 
-def use_random(x):
+def do_test_n_times(n, boolean_test):
     results = 0
-    for i in range(x):
-        if random.random() < 0.5:
+    for i in range(n):
+        if boolean_test(i):
             results += 1
     return results
 
 
-def use_choice(x):
-    results = 0
-    for i in range(x):
-        if random.choice([0,1]):
-            results += 1
-    return results
+n = 10000000
 
 
 with timer("use_random"):
-    print(use_random(10000000))
+    print(do_test_n_times(n, lambda x: random.random() < 0.5))
 
 
 with timer("use_choice"):
-    print(use_choice(10000000))
+    print(do_test_n_times(n, lambda x: random.choice([0,1])))
 
 
 '''
