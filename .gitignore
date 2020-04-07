@@ -1,4 +1,10 @@
-trials
+.idea
+example.db
+data_from_files/trials/t_1000000
+data_from_files/trials/t_1000000bin
+data_from_files/trials/t_1000000x1
+data_from_files/trials/t_1000000x100
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
