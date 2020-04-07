@@ -24,6 +24,7 @@ e.g. python -m gen_trials <output format> <trial size> <num trials per file> <fi
 /$ python -m trials.gen_trials json_slow 1000000 1 trials/t_1000000x1 trials 1
 /$ python -m trials.gen_trials py_split 1000000 10 trials/t_1000000 splittrials 1
 /$ python -m trials.gen_trials json_slow 1000000 100 trials/t_1000000x100 trials 2
+/$ python -m trials.gen_trials bin 1000000 10 trials/t_1000000bin trials 10
 
 Then run this script. The first time you run it the tests that use python files will be slow and
 generatre pyc files. The second time you run it these tests will run much quicker.
@@ -201,14 +202,14 @@ if __name__ == "__main__":
     print()
 
     with timer('12. read 1000000 x 10 from binary one by one'):
-        with open('trials/trials_1000000x10.bin', 'rb') as file:
+        with open('trials/t_1000000bin/trials0.bin', 'rb') as file:
             for i in range(10000000):
                 j = int.from_bytes(file.read(8), byteorder='big')
     print()
 
     with timer('read 1000000 x 10 from binary as struct'):
         ints_read = 0
-        with open('trials/trials_1000000x10.bin', 'rb') as file:
+        with open('trials/t_1000000bin/trials1.bin', 'rb') as file:
             data = file.read()
             instruct = "Q" * ((len(data) ) // 8)
             d = struct.unpack("!"+instruct , data)
