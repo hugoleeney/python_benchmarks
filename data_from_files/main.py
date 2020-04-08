@@ -15,7 +15,8 @@ generate data from scratch or pre-generate and store data.
 
 # Instructions
 
-To run the test in full you need to generate and precompile a number of files. Run
+To run the test in full you need to generate a number of files. If you
+generate all these files the total size will be in excess of 25GB. Run
 the following commands from the source directory where this script is kept first (sub-directories
 trials from repo should be present)
 e.g. python -m gen_trials <output format> <trial size> <num trials per file> <file prefix> <output dir> <num files>
