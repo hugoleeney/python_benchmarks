@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
 """
 Written to work with standard python 3.5.5 (external libraries required: numpy==1.18.2).
+
+
+# Purpose
+
 Explores the fastest way to run simple statistics on arrays of numbers.
-Summary Conclusion: for non-trivial cases it is quicker to create a numpy array and use numpy functions. 
+
+
+# Summary Conclusion
+
+For non-trivial cases it is quicker to create a numpy array and use numpy functions. 
 You can run numpy functions on python lists but it would seem you have the same overhead of converting to numpy array.
 There is no advantage gained when running numpy functions more than once.
 
-Sample Output:
+
+# Sample Output
+
 timing: create array
 runtime=4.32141900062561
 
