@@ -7,6 +7,11 @@ Written to work with standard python 3.5.5 (no additional libraries required).
 Explores the fastest way to generate a 50/50 random variable.
 
 
+# Instructions
+
+You can simply run this file as a script.
+
+
 # Summary Conclusion
 
 Using random.random and comparing to 0.5 is much faster than using random.choice([0,1]).

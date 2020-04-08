@@ -8,6 +8,11 @@ Written to work with standard python 3.5.5 (external libraries required: numpy==
 Explores the fastest way to run simple statistics on arrays of numbers.
 
 
+# Instructions
+
+If you have numpy installed then you can just run this as a script.
+
+
 # Summary Conclusion
 
 For non-trivial cases it is quicker to create a numpy array and use numpy functions. 
